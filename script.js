@@ -33,11 +33,17 @@ function ratingLabelFromSelect(selectEl) {
 }
 
 function updateLivePreview() {
-    setText(previewName, fullnameEl.value.trim());
-    setText(previewEmail, emailEl.value.trim());
-    const lbl = ratingLabelFromSelect(ratingEl);
-    setText(previewRating, lbl || "—");
-    setText(previewFeedback, feedbackEl.value);
+    const name = fullnameEl.value.trim();
+    const email = emailEl.value.trim();
+    const feedback = feedbackEl.value.trim();
+    setText(previewName, name || "N/A");
+    setText(previewEmail, email || "N/A");
+    if (!ratingEl.value) {
+        setText(previewRating, "N/A");
+    } else {
+        setText(previewRating, ratingLabelFromSelect(ratingEl));
+    }
+    setText(previewFeedback, feedback ? feedbackEl.value : "N/A");
 }
 
 function updateSummary() {
@@ -48,7 +54,7 @@ function updateSummary() {
         return;
     }
     const sum = responses.reduce((acc, r) => acc + r.ratingNum, 0);
-    const avg = (sum / n).toFixed(1);
+    const avg = (sum / n).toFixed(2);
     averageRatingEl.textContent = avg;
 }
 
@@ -158,7 +164,7 @@ function handleSubmit(event) {
     const name = fullnameEl.value.trim();
     const email = emailEl.value.trim();
     const ratingNum = Number(ratingEl.value);
-    const ratingLabel = ratingLabelFromSelect(ratingEl);
+    const ratingLabel = String(ratingNum);
     const feedback = feedbackEl.value.trim();
 
     const entry = { name, email, ratingNum, ratingLabel, feedback };
