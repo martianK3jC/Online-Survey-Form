@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Survey Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <h1 class="site-title">Online Survey Form</h1>
+    </header>
+
+    <main class="two-column">
+        <section class="card form-card" aria-labelledby="feedback-heading">
+            <h2 id="feedback-heading" class="card-title">Share Your Feedback</h2>
+            <form id="feedbackForm" class="feedback-form" novalidate action="#" method="post">
+                <div class="field">
+                    <label for="fullname">Full Name:</label>
+                    <input type="text" id="fullname" name="fullname" autocomplete="name"
+                        aria-describedby="error-fullname" aria-invalid="false">
+                    <span id="error-fullname" class="error-msg" role="alert"></span>
+                </div>
+
+                <div class="field">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" autocomplete="email"
+                        aria-describedby="error-email" aria-invalid="false">
+                    <span id="error-email" class="error-msg" role="alert"></span>
+                </div>
+
+                <div class="field">
+                    <label for="rating">Rate Our Services:</label>
+                    <select id="rating" name="rating" aria-describedby="error-rating" aria-invalid="false">
+                        <option value="">Select a rating…</option>
+                        <option value="1">1 - Poor</option>
+                        <option value="2">2 - Average</option>
+                        <option value="3">3 - Good</option>
+                        <option value="4">4 - Very Good</option>
+                        <option value="5">5 - Excellent</option>
+                    </select>
+                    <span id="error-rating" class="error-msg" role="alert"></span>
+                </div>
+
+                <div class="field">
+                    <label for="feedback">Your Feedback:</label>
+                    <textarea id="feedback" name="feedback" rows="4"
+                        aria-describedby="error-feedback" aria-invalid="false"></textarea>
+                    <span id="error-feedback" class="error-msg" role="alert"></span>
+                </div>
+
+                <button type="submit" id="submitBtn" class="btn-submit">Submit</button>
+            </form>
+        </section>
+
+        <section class="card preview-stack" aria-label="Live preview and summary">
+            <div class="panel preview-panel">
+                <h2 class="card-title">Live Preview</h2>
+                <div id="previewBox" class="preview-box">
+                    <p>Name: <span id="previewName"></span></p>
+                    <p>Email: <span id="previewEmail"></span></p>
+                    <p>Rating: <span id="previewRating"></span></p>
+                    <p>Feedback: <span id="previewFeedback"></span></p>
+                </div>
+            </div>
+            <div class="panel summary-panel">
+                <h2 class="card-title">Summary</h2>
+                <div id="summaryBox" class="summary-box">
+                    <p>Total Responses: <span id="totalResponses">0</span></p>
+                    <p>Average Rating: <span id="averageRating">0</span></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <section class="responses-section" aria-labelledby="responses-heading">
+        <h2 id="responses-heading" class="section-heading">Responses</h2>
+        <div class="table-card">
+            <table id="responsesTable" class="responses-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Rating</th>
+                        <th>Feedback</th>
+                    </tr>
+                </thead>
+                <tbody id="responsesBody">
+                    <!-- Rows appended via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </section>
+</body>
+</html>

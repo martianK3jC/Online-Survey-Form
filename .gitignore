@@ -1,0 +1,11 @@
+# Documentation (local / not tracked)
+docs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
